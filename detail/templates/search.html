@@ -1,0 +1,39 @@
+{% extends 'layout.html' %}
+{% block content %}
+<!-- Start About us -->
+<section id="mu-about-us">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="mu-about-us-area">
+                    <div class="mu-title">
+                        <span class="mu-subtitle">NOW</span>
+                        <a id="#mu-about-us"></a><h2>{{ hashtag }}가 있는 게시글 목록</h2>
+                        <i class="fa fa-spoon"></i>              
+                        <span class="mu-title-bar"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+  
+<div class="container1">
+    <div class="card">
+        <div class="card-body">
+            {% for detail in hashtag.detail_set.all %}
+                    <h1>{{ detail.title }}</h1>
+                    <p>{{ detail.pub_date }}</p>
+                    <p>{{ detail.content }}</p>
+                    {% for tag in detail.hashtags.all %}
+                        <span>{{ tag.name }}</span>
+                    {% endfor %}
+                    <br>
+                    <hr>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+      
